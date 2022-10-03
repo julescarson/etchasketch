@@ -1,2 +1,16 @@
 html,
 body {}
+
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(16, 25px);
+    grid-template-rows: repeat(16, 25px);
+}
+
+.x,
+.y {
+    border: 1px solid black;
+    /* width: 25px;
+    height: 25px; */
+}

@@ -1,5 +1,5 @@
 const content = document.querySelector('.content');
-const x = 16;
+const x = 256;
 const y = 16;
 
 
@@ -16,8 +16,8 @@ const makedivs = (parent, num, cn) => {
 
 const r = makedivs(content, x, 'x');
 
-for (const topLevelDiv of r) {
-    makedivs(topLevelDiv, y, 'y');
-}
+// for (const topLevelDiv of r) {
+//     makedivs(topLevelDiv, y, 'y');
+// }
 
 console.log(r[0][0]);
