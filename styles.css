@@ -8,9 +8,22 @@ body {}
     grid-template-rows: repeat(16, 25px);
 }
 
-.x,
-.y {
-    border: 1px solid black;
+.x {
+    border: none;
     /* width: 25px;
     height: 25px; */
+}
+
+/* 
+.x:hover {
+    background-color: black;
+} */
+
+.xactive {
+    background-color: red;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }

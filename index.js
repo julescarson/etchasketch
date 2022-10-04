@@ -1,23 +1,38 @@
 const content = document.querySelector('.content');
 const x = 256;
-const y = 16;
+const userColor = `black`;
 
 
-
-const makedivs = (parent, num, cn) => {
-    return Array.from(Array(num)).map((e, i) => {
-        const nd = document.createElement('div');
-        nd.className = i;
-        nd.classList.add(cn);
-        parent.append(nd);
-        return nd;
-    });
+for (i = 0; i <= x; i++) {
+    const newDiv = document.createElement(`div`)
+    newDiv.setAttribute("id", i)
+    newDiv.classList.add("x")
+    content.appendChild(newDiv);
 }
 
-const r = makedivs(content, x, 'x');
+const squares = document.getElementsByClassName(`x`);
+const makeActive = (e) => {
+    e.target.setAttribute("class", "xactive");
+}
 
-// for (const topLevelDiv of r) {
-//     makedivs(topLevelDiv, y, 'y');
-// }
+Array.from(squares).forEach(function (squares) {
+    squares.addEventListener('mousedown', makeActive);
+});
 
-console.log(r[0][0]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
