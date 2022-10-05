@@ -1,9 +1,11 @@
 const content = document.querySelector('.content');
-const x = 10;
+const gridContainer = document.getElementsByClassName('content');
+const x = 256;
 const userColor = `black`;
 
 
-for (i = 0; i <= (x * x); i++) {
+
+for (i = 0; i <= x; i++) {
     const newDiv = document.createElement(`div`)
     newDiv.setAttribute("id", i)
     newDiv.classList.add("x")
@@ -28,6 +30,17 @@ Array.from(squares).forEach(function (squares) {
 
 
 
+
+
+// color picker
+
+// canvas size changer (presets)
+
+// erase (clear) drawing
+
+// page style
+
+// save/send paste image??
 
 
 
