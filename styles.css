@@ -1,10 +1,12 @@
 html,
 body {
+    display: flex;
     font-size: 16px;
+    justify-content: center;
 }
 
 
-.content {
+.grid16 {
     display: grid;
     grid-template-columns: repeat(16, 1.5em);
     grid-template-rows: repeat(16, 1.5em);
