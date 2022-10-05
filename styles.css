@@ -4,12 +4,19 @@ body {}
 
 .content {
     display: grid;
-    grid-template-columns: repeat(16, 25px);
-    grid-template-rows: repeat(16, 25px);
+    grid-template-columns: repeat(16, 5em);
+    grid-template-rows: repeat(16, 5em);
+    border: 1px solid black;
 }
 
 .x {
     border: none;
+
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     /* width: 25px;
     height: 25px; */
 }

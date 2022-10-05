@@ -1,9 +1,9 @@
 const content = document.querySelector('.content');
-const x = 256;
+const x = 10;
 const userColor = `black`;
 
 
-for (i = 0; i <= x; i++) {
+for (i = 0; i <= (x * x); i++) {
     const newDiv = document.createElement(`div`)
     newDiv.setAttribute("id", i)
     newDiv.classList.add("x")
@@ -11,12 +11,19 @@ for (i = 0; i <= x; i++) {
 }
 
 const squares = document.getElementsByClassName(`x`);
+
+let mouseClicked = false;
+document.body.onmousedown = () => mouseClicked = true;
+document.body.onmouseup = () => mouseClicked = false;
+
 const makeActive = (e) => {
-    e.target.setAttribute("class", "xactive");
+    if (mouseClicked == true) {
+        e.target.setAttribute("class", "xactive");
+    }
 }
 
 Array.from(squares).forEach(function (squares) {
-    squares.addEventListener('mousedown', makeActive);
+    squares.addEventListener('mouseenter', makeActive);
 });
 
 
