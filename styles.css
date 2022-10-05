@@ -15,6 +15,11 @@ body {
     border: 1px solid black;
 }
 
+.gridsize {
+    width: 100px;
+}
+
+
 .x {
     border: none;
     -webkit-user-drag: none;
@@ -27,11 +32,11 @@ body {
 
 
 .x:hover {
-    background-color: black;
+    /* background-color: black; */
 }
 
 .xactive {
-    background-color: red;
+    background-color: white;
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;

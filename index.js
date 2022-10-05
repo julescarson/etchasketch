@@ -2,6 +2,10 @@
 
 const content = document.querySelector('.content');
 
+
+
+
+
 //grid
 const grid = document.createElement('div');
 grid.classList.add('grid16');
@@ -11,6 +15,12 @@ content.appendChild(grid);
 const uiElements = document.createElement('div');
 uiElements.classList.add('ui');
 content.appendChild(uiElements);
+
+//grid size range
+const gridSize = document.createElement('input');
+gridSize.type = "range";
+gridSize.classList.add('gridsize');
+uiElements.appendChild(gridSize);
 
 //total grid squares (256 inital)
 let x = 256;
