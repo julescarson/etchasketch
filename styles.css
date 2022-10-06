@@ -6,19 +6,12 @@ body {
 }
 
 
-.grid16 {
+.gridArea {
     display: grid;
-    grid-template-columns: repeat(16, 1.5em);
-    grid-template-rows: repeat(16, 1.5em);
-    width: 24em;
-    height: auto;
+    width: 500px;
+    height: 500px;
     border: 1px solid black;
 }
-
-.gridsize {
-    width: 100px;
-}
-
 
 .x {
     border: none;
@@ -27,16 +20,10 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-
-}
-
-
-.x:hover {
-    /* background-color: black; */
 }
 
 .xactive {
-    background-color: white;
+    background-color: red;
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;

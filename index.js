@@ -2,13 +2,16 @@
 
 const content = document.querySelector('.content');
 
+let xy = 10;
 
-
-
-
-//grid
+// Grid container
 const grid = document.createElement('div');
-grid.classList.add('grid16');
+function newGridSettings(rowCol) {
+    grid.classList.add(`gridArea`);
+    grid.style.gridTemplateColumns = (`repeat(${rowCol}, ${500 / rowCol}px)`);
+    grid.style.gridTemplateRows = (`repeat(${rowCol}, ${500 / rowCol}px)`);
+}
+newGridSettings(xy);
 content.appendChild(grid);
 
 // UI
@@ -16,22 +19,25 @@ const uiElements = document.createElement('div');
 uiElements.classList.add('ui');
 content.appendChild(uiElements);
 
-//grid size range
-const gridSize = document.createElement('input');
-gridSize.type = "range";
-gridSize.classList.add('gridsize');
-uiElements.appendChild(gridSize);
+// UI slider
+let sizeSlider = document.createElement('input');
+sizeSlider.type = "range";
+sizeSlider.step = "1";
+sizeSlider.min = 1;
+sizeSlider.max = 100;
+sizeSlider.classList.add('sizeSlider');
+uiElements.appendChild(sizeSlider);
 
-//total grid squares (256 inital)
-let x = 256;
-
-//create divs for grid
-for (i = 0; i <= x; i++) {
-    const newDiv = document.createElement(`div`)
-    newDiv.setAttribute("id", "sqr")
-    newDiv.classList.add("x")
-    grid.appendChild(newDiv);
+//grid squares
+function createGrid(num) {
+    for (i = 0; i <= num; i++) {
+        const newDiv = document.createElement(`div`)
+        newDiv.setAttribute("id", i);
+        newDiv.classList.add("x");
+        grid.appendChild(newDiv);
+    }
 }
+createGrid(xy * xy);
 
 //access grid squares
 const squares = document.getElementsByClassName(`x`);
@@ -40,6 +46,7 @@ const squares = document.getElementsByClassName(`x`);
 let mouseClicked = false;
 document.body.onmousedown = () => mouseClicked = true;
 document.body.onmouseup = () => mouseClicked = false;
+
 
 //draw when clicked
 const firstClick = (e) => {
@@ -52,42 +59,43 @@ const drawOn = (e) => {
 }
 
 //listeners for when to draw - array of grid squares
-Array.from(squares).forEach(function (squares) {
-    squares.addEventListener('mousedown', firstClick);
-    squares.addEventListener('mouseenter', drawOn);
-});
+function gridToArray() {
+    Array.from(squares).forEach(function (squares) {
+        squares.addEventListener('mousedown', firstClick);
+        squares.addEventListener('mouseenter', drawOn);
+    });
+}
+gridToArray();
 
-
-// color picker
-const userColor = `black`;
-// canvas size changer (presets)
+function removeGrid() {
+    document.querySelectorAll(`.x`).forEach(e => { e.parentNode.removeChild(e) });
+}
 
 // erase (clear) drawing
 const eraseButton = document.createElement('button');
 eraseButton.classList.add('erase');
-eraseButton.textContent = `Erase All`;
+eraseButton.textContent = `Reset`;
 eraseButton.onclick = () => {
     document.querySelectorAll(`.x`).forEach(e => { e.classList.remove('xactive') });
 }
-
 uiElements.appendChild(eraseButton);
 
-
-// page style
-
-// save/send paste image??
-
-
+//button change grid size test
+const gridSizeButton = document.createElement('button');
+gridSizeButton.classList.add('gridSizeButton');
+gridSizeButton.textContent = `Resize`;
 
 
-
-
-
-
-
-
+gridSizeButton.onclick = () => {
+    removeGrid();
+    newGridSettings(sizeSlider.value);
+    createGrid(sizeSlider.value ** 2);
+    gridToArray();
+}
 
 
 
 
+
+uiElements.appendChild(gridSizeButton);
 
