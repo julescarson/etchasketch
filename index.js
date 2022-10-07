@@ -1,34 +1,84 @@
 
 
 const content = document.querySelector('.content');
+const squares = document.getElementsByClassName(`x`);
+const squaresColor = document.getElementsByClassName(`xactive`);
 
-let xy = 10;
-
-// Grid container
 const grid = document.createElement('div');
+const uiElements = document.createElement('div');
+const sizeSlider = document.createElement('input');
+const eraseButton = document.createElement('button');
+
+const randomButton = document.createElement('button');
+
+
+uiElements.classList.add('ui');
+sizeSlider.classList.add('sizeSlider');
+eraseButton.classList.add('erase');
+
+randomButton.classList.add('random');
+
+
+
+content.appendChild(grid);
+content.appendChild(uiElements);
+uiElements.appendChild(sizeSlider);
+uiElements.appendChild(eraseButton);
+
+uiElements.appendChild(randomButton);
+
+//initialize
+let userColor = randomColor();
+const xy = 10;
+newGridSettings(xy);
+createGrid(xy * xy);
+
+//slider
+sizeSlider.type = "range";
+sizeSlider.value = "10";
+sizeSlider.step = "1";
+sizeSlider.min = 1;
+sizeSlider.max = 50;
+sizeSlider.onchange = () => { newCanvas(); }
+
+//erase btn
+eraseButton.textContent = `Reset`;
+eraseButton.onclick = () => { newCanvas(); }
+
+
+//random btn
+randomButton.innerText = `Random`;
+randomButton.onclick = () => {
+    console.log(randomColor());
+    userColor = randomColor();
+}
+
+function randomColor() {
+    let rgb = new Array;
+    for (i = 0; i <= 2; i++) {
+        rgb.push(Math.random() * 255);
+    }
+    let rgbToStr = `rgb(${rgb.toString()})`;
+    return rgbToStr;
+}
+
+//new canvas
+function newCanvas() {
+    removeGrid();
+    newGridSettings(sizeSlider.value);
+    createGrid(sizeSlider.value ** 2);
+    gridToArray();
+}
+
+
+//setup grid
 function newGridSettings(rowCol) {
     grid.classList.add(`gridArea`);
     grid.style.gridTemplateColumns = (`repeat(${rowCol}, ${500 / rowCol}px)`);
     grid.style.gridTemplateRows = (`repeat(${rowCol}, ${500 / rowCol}px)`);
 }
-newGridSettings(xy);
-content.appendChild(grid);
 
-// UI
-const uiElements = document.createElement('div');
-uiElements.classList.add('ui');
-content.appendChild(uiElements);
-
-// UI slider
-let sizeSlider = document.createElement('input');
-sizeSlider.type = "range";
-sizeSlider.step = "1";
-sizeSlider.min = 1;
-sizeSlider.max = 100;
-sizeSlider.classList.add('sizeSlider');
-uiElements.appendChild(sizeSlider);
-
-//grid squares
+//create grid
 function createGrid(num) {
     for (i = 0; i <= num; i++) {
         const newDiv = document.createElement(`div`)
@@ -37,28 +87,25 @@ function createGrid(num) {
         grid.appendChild(newDiv);
     }
 }
-createGrid(xy * xy);
 
-//access grid squares
-const squares = document.getElementsByClassName(`x`);
-
-//mouse clicked or unclicked
+//mouseclick check
 let mouseClicked = false;
 document.body.onmousedown = () => mouseClicked = true;
 document.body.onmouseup = () => mouseClicked = false;
 
-
-//draw when clicked
+//drawing
 const firstClick = (e) => {
     e.target.setAttribute("class", "x xactive");
+    e.target.style.backgroundColor = `${userColor}`;
 }
 const drawOn = (e) => {
     if (mouseClicked == true) {
         e.target.setAttribute("class", "x xactive");
+        e.target.style.backgroundColor = `${userColor}`;
     }
 }
 
-//listeners for when to draw - array of grid squares
+//grid listeners
 function gridToArray() {
     Array.from(squares).forEach(function (squares) {
         squares.addEventListener('mousedown', firstClick);
@@ -67,35 +114,10 @@ function gridToArray() {
 }
 gridToArray();
 
+//remove grid
 function removeGrid() {
     document.querySelectorAll(`.x`).forEach(e => { e.parentNode.removeChild(e) });
 }
 
-// erase (clear) drawing
-const eraseButton = document.createElement('button');
-eraseButton.classList.add('erase');
-eraseButton.textContent = `Reset`;
-eraseButton.onclick = () => {
-    document.querySelectorAll(`.x`).forEach(e => { e.classList.remove('xactive') });
-}
-uiElements.appendChild(eraseButton);
 
-//button change grid size test
-const gridSizeButton = document.createElement('button');
-gridSizeButton.classList.add('gridSizeButton');
-gridSizeButton.textContent = `Resize`;
-
-
-gridSizeButton.onclick = () => {
-    removeGrid();
-    newGridSettings(sizeSlider.value);
-    createGrid(sizeSlider.value ** 2);
-    gridToArray();
-}
-
-
-
-
-
-uiElements.appendChild(gridSizeButton);
-
+//mosaic mode
