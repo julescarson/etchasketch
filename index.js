@@ -17,6 +17,7 @@ sizeSlider.classList.add('sizeSlider');
 eraseButton.classList.add('erase');
 randomButton.classList.add('random');
 mosaicButton.classList.add('mosaic');
+mosaicButton.setAttribute("id", "mosaic");
 
 
 
@@ -50,15 +51,23 @@ eraseButton.onclick = () => { newCanvas(); }
 //random btn
 randomButton.innerText = `Random`;
 randomButton.onclick = () => {
-    console.log(randomColor());
+    mosaicMode = false;
     userColor = randomColor();
+    mosaicToggle();
 }
 
 //mosaic btn
-mosaicButton.innerText = `Mosaic Mode`;
+mosaicButton.innerText = `Mosaic`;
 mosaicButton.onclick = () => {
     mosaicMode = !mosaicMode;
+    mosaicToggle();
 }
+
+const mosaicToggle = () => {
+    if (mosaicMode) { mosaicButton.classList.add('on') }
+    else { mosaicButton.classList.remove('on') }
+}
+
 
 
 function randomColor() {

@@ -1,24 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 html,
 body {
+    font-family: 'Playfair Display', serif;
     display: flex;
     font-size: 16px;
     justify-content: center;
-
     background: url(blank_canvas.jpg) no-repeat center center fixed;
-
-
-
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
 
+button {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    fill-opacity: 0;
+    margin: 2em;
+    background-color: rgba(0, 0, 0, 0%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.on {
+    border: 1px solid black;
+}
+
+.sizeSlider {
+    background-color: black;
+
+
+}
+
+
 
 .gridArea {
     position: absolute;
     margin: 0;
-
     display: grid;
     margin-top: 10em;
     width: 500px;
@@ -33,6 +51,7 @@ body {
 }
 
 .x {
+    background-color: white;
     border: none;
     -webkit-user-drag: none;
     user-select: none;
