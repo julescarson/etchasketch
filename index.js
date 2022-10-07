@@ -8,15 +8,15 @@ const grid = document.createElement('div');
 const uiElements = document.createElement('div');
 const sizeSlider = document.createElement('input');
 const eraseButton = document.createElement('button');
-
 const randomButton = document.createElement('button');
+const mosaicButton = document.createElement('button');
 
 
 uiElements.classList.add('ui');
 sizeSlider.classList.add('sizeSlider');
 eraseButton.classList.add('erase');
-
 randomButton.classList.add('random');
+mosaicButton.classList.add('mosaic');
 
 
 
@@ -24,10 +24,11 @@ content.appendChild(grid);
 content.appendChild(uiElements);
 uiElements.appendChild(sizeSlider);
 uiElements.appendChild(eraseButton);
-
 uiElements.appendChild(randomButton);
+uiElements.appendChild(mosaicButton);
 
 //initialize
+let mosaicMode = false;
 let userColor = randomColor();
 const xy = 10;
 newGridSettings(xy);
@@ -52,6 +53,13 @@ randomButton.onclick = () => {
     console.log(randomColor());
     userColor = randomColor();
 }
+
+//mosaic btn
+mosaicButton.innerText = `Mosaic Mode`;
+mosaicButton.onclick = () => {
+    mosaicMode = !mosaicMode;
+}
+
 
 function randomColor() {
     let rgb = new Array;
@@ -93,15 +101,21 @@ let mouseClicked = false;
 document.body.onmousedown = () => mouseClicked = true;
 document.body.onmouseup = () => mouseClicked = false;
 
+//mosaic mode
+const colorCheck = () => {
+    if (mosaicMode == true) { userColor = randomColor(); }
+    return userColor;
+}
+
 //drawing
 const firstClick = (e) => {
     e.target.setAttribute("class", "x xactive");
-    e.target.style.backgroundColor = `${userColor}`;
+    e.target.style.backgroundColor = `${colorCheck()}`;
 }
 const drawOn = (e) => {
     if (mouseClicked == true) {
         e.target.setAttribute("class", "x xactive");
-        e.target.style.backgroundColor = `${userColor}`;
+        e.target.style.backgroundColor = `${colorCheck()}`;
     }
 }
 
@@ -120,4 +134,4 @@ function removeGrid() {
 }
 
 
-//mosaic mode
+
