@@ -4,6 +4,7 @@ const content = document.querySelector('.content');
 const squares = document.getElementsByClassName(`x`);
 const squaresColor = document.getElementsByClassName(`xactive`);
 
+
 const grid = document.createElement('div');
 const bg = document.createElement('div');
 const gridContainer = document.createElement('div');
@@ -12,6 +13,7 @@ const sizeSlider = document.createElement('input');
 const eraseButton = document.createElement('button');
 const randomButton = document.createElement('button');
 const mosaicButton = document.createElement('button');
+
 
 bg.classList.add('bg');
 gridContainer.classList.add('gridContainer');
@@ -24,16 +26,19 @@ mosaicButton.setAttribute("id", "mosaic");
 
 
 
+
 content.appendChild(bg);
 bg.appendChild(gridContainer);
 bg.appendChild(uiElements);
 gridContainer.appendChild(grid);
 
-uiElements.appendChild(sizeSlider);
+
+
 uiElements.appendChild(eraseButton);
 uiElements.appendChild(randomButton);
 uiElements.appendChild(mosaicButton);
 
+uiElements.appendChild(sizeSlider);
 
 
 //initialize
@@ -57,7 +62,11 @@ sizeSlider.onchange = () => { newCanvas(); }
 
 //erase btn
 eraseButton.textContent = `Reset`;
-eraseButton.onclick = () => { newCanvas(); }
+eraseButton.onclick = () => {
+    newCanvas();
+    randomButton.style.border = ``;
+    randomButton.style.color = ``;
+}
 
 
 //random btn
@@ -66,6 +75,8 @@ randomButton.onclick = () => {
     mosaicMode = false;
     userColor = randomColor();
     mosaicToggle();
+    randomButton.style.border = `1px solid ${userColor}`;
+    randomButton.style.color = `${userColor}`;
 }
 
 //mosaic btn
@@ -73,6 +84,9 @@ mosaicButton.innerText = `Mosaic`;
 mosaicButton.onclick = () => {
     mosaicMode = !mosaicMode;
     mosaicToggle();
+    randomButton.style.border = ``;
+    randomButton.style.color = ``;
+
 }
 
 const mosaicToggle = () => {

@@ -1,6 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 @media screen and (max-width: 1280px) {
+    .ui {
+        position: absolute;
+        width: 175px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 27%;
+        padding-top: 7.5%;
+
+    }
+
+    .ui>* {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75em;
+        fill-opacity: 0;
+        margin: 0.6em;
+        background-color: rgba(0, 0, 0, 0%);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        width: 100%;
+    }
+
     .gridArea {
         height: 300px;
         width: 300px;
@@ -13,6 +33,25 @@
 }
 
 @media screen and (min-width: 1281px) {
+    .ui>* {
+        font-family: 'Playfair Display', serif;
+        font-size: 2em;
+        fill-opacity: 0;
+        margin: 0.75em;
+        background-color: rgba(0, 0, 0, 0%);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        width: 100%;
+    }
+
+    .ui {
+        position: absolute;
+        width: 175px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 33%;
+        padding-top: 8.7%;
+    }
+
     .gridArea {
         height: 450px;
         width: 450px;
@@ -33,17 +72,32 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 16px;
     margin: 0;
+    margin-top: -3em;
     border: 0;
     padding: 0;
     overflow: hidden;
+    background: url(green_gradient_bg.png);
+    transform: scaleY(-1);
+
 }
 
 .ui {
-    position: absolute;
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    z-index: 0;
+    /* position: absolute;
+    width: 175px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 33%;
+    padding-top: 10%; */
+}
+
+.ui>* {
+    /* font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    fill-opacity: 0;
+    margin: 0.75em;
+    background-color: rgba(0, 0, 0, 0%);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    width: 100%; */
 }
 
 .bg {
@@ -70,14 +124,39 @@ body {
         0 16px 16px rgba(0, 0, 0, 0.12);
 }
 
+input[type=range] {
+    -webkit-appearance: none;
+    background: #FFCA85;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 0.15em solid white;
+    outline: 1px solid black;
+
+    height: 0.75em;
+    width: 0.75em;
+    /* border-radius: 3px; */
+    background: white;
+    /* cursor: pointer; */
+    margin-top: -0.3em;
+    margin-bottom: -0.3em;
+    /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 0 0 0 #000000, 0px 0px 1px #0d0d0d;
+    /* Add cool effects to your sliders! */
+}
 
 button {
-    font-family: 'Playfair Display', serif;
-    font-size: 2em;
-    fill-opacity: 0;
-    margin: 2em;
-    background-color: rgba(0, 0, 0, 0%);
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12);
+}
+
+button:hover {
+
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12),
+        0 2px 2px rgba(0, 0, 0, 0.12),
+        0 4px 4px rgba(0, 0, 0, 0.12),
+        0 8px 8px rgba(0, 0, 0, 0.12),
+        0 16px 16px rgba(0, 0, 0, 0.12);
 }
 
 .on {
@@ -87,11 +166,7 @@ button {
 .sizeSlider {
     background-color: black;
 
-
 }
-
-
-
 
 
 .x {
