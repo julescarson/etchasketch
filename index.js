@@ -23,11 +23,12 @@ mosaicButton.classList.add('mosaic');
 mosaicButton.setAttribute("id", "mosaic");
 
 
+
 content.appendChild(bg);
 bg.appendChild(gridContainer);
+bg.appendChild(uiElements);
 gridContainer.appendChild(grid);
 
-content.appendChild(uiElements);
 uiElements.appendChild(sizeSlider);
 uiElements.appendChild(eraseButton);
 uiElements.appendChild(randomButton);
