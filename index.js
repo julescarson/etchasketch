@@ -5,13 +5,16 @@ const squares = document.getElementsByClassName(`x`);
 const squaresColor = document.getElementsByClassName(`xactive`);
 
 const grid = document.createElement('div');
+const bg = document.createElement('div');
+const gridContainer = document.createElement('div');
 const uiElements = document.createElement('div');
 const sizeSlider = document.createElement('input');
 const eraseButton = document.createElement('button');
 const randomButton = document.createElement('button');
 const mosaicButton = document.createElement('button');
 
-
+bg.classList.add('bg');
+gridContainer.classList.add('gridContainer');
 uiElements.classList.add('ui');
 sizeSlider.classList.add('sizeSlider');
 eraseButton.classList.add('erase');
@@ -20,15 +23,23 @@ mosaicButton.classList.add('mosaic');
 mosaicButton.setAttribute("id", "mosaic");
 
 
+content.appendChild(bg);
+bg.appendChild(gridContainer);
+gridContainer.appendChild(grid);
 
-content.appendChild(grid);
 content.appendChild(uiElements);
 uiElements.appendChild(sizeSlider);
 uiElements.appendChild(eraseButton);
 uiElements.appendChild(randomButton);
 uiElements.appendChild(mosaicButton);
 
+
+
 //initialize
+let canvasWidth;
+canvasSizePx();
+console.log(canvasWidth);
+
 let mosaicMode = false;
 let userColor = randomColor();
 const xy = 10;
@@ -88,12 +99,29 @@ function newCanvas() {
 }
 
 
+//sqr size 
+
 //setup grid
+function canvasSizePx() {
+    if (window.innerWidth <= 1280) { canvasWidth = 300; }
+    else { canvasWidth = 450; }
+}
+
+
+
+window.onresize = () => {
+    canvasSizePx();
+    grid.style.gridTemplateColumns = (`repeat(${sizeSlider.value}, ${canvasWidth / sizeSlider.value}px)`);
+    grid.style.gridTemplateRows = (`repeat(${sizeSlider.value}, ${canvasWidth / sizeSlider.value}px)`);
+}
+
 function newGridSettings(rowCol) {
     grid.classList.add(`gridArea`);
-    grid.style.gridTemplateColumns = (`repeat(${rowCol}, ${500 / rowCol}px)`);
-    grid.style.gridTemplateRows = (`repeat(${rowCol}, ${500 / rowCol}px)`);
+    grid.style.gridTemplateColumns = (`repeat(${rowCol}, ${canvasWidth / rowCol}px)`);
+    grid.style.gridTemplateRows = (`repeat(${rowCol}, ${canvasWidth / rowCol}px)`);
 }
+
+
 
 //create grid
 function createGrid(num) {

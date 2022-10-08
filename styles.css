@@ -1,17 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
+@media screen and (max-width: 1280px) {
+    .gridArea {
+        height: 300px;
+        width: 300px;
+    }
+
+    .bg {
+        width: 1280px;
+        height: 720px;
+    }
+}
+
+@media screen and (min-width: 1281px) {
+    .gridArea {
+        height: 450px;
+        width: 450px;
+    }
+
+    .bg {
+        width: 1920px;
+        height: 1080px;
+    }
+}
+
 html,
 body {
     font-family: 'Playfair Display', serif;
-    display: flex;
     font-size: 16px;
-    justify-content: center;
-    background: url(blank_canvas.jpg) no-repeat center center fixed;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    overflow: hidden;
+
+
+
+    /* background: url(blank_canvas2.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    position: relative; */
+
 }
+
+.bg {
+    position: relative;
+    background: url(blank_canvas2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gridArea {
+
+
+    position: absolute;
+    margin-left: 49%;
+    margin-top: 8.4%;
+    background-color: white;
+    border: 1px solid black;
+
+
+    display: grid;
+    /* position: absolute;
+    margin-left: 49%;
+    margin-top: 8.4%;
+    background-color: white;
+
+
+    border: 1px solid black;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12),
+        0 2px 2px rgba(0, 0, 0, 0.12),
+        0 4px 4px rgba(0, 0, 0, 0.12),
+        0 8px 8px rgba(0, 0, 0, 0.12),
+        0 16px 16px rgba(0, 0, 0, 0.12); */
+}
+
 
 button {
     font-family: 'Playfair Display', serif;
@@ -34,21 +98,7 @@ button {
 
 
 
-.gridArea {
-    position: absolute;
-    margin: 0;
-    display: grid;
-    margin-top: 10em;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
 
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12),
-        0 2px 2px rgba(0, 0, 0, 0.12),
-        0 4px 4px rgba(0, 0, 0, 0.12),
-        0 8px 8px rgba(0, 0, 0, 0.12),
-        0 16px 16px rgba(0, 0, 0, 0.12);
-}
 
 .x {
     background-color: white;
