@@ -127,23 +127,38 @@ body {
 input[type=range] {
     -webkit-appearance: none;
     background: #FFCA85;
+    height: 3px;
 }
+
+input[type=range]::-moz-range-thumb {
+    border: solid white;
+    outline: 1px solid black;
+    border-radius: 0;
+    height: 0.75em;
+    width: 0.75em;
+
+    background: white;
+    /* margin-top: -0.3em;
+    margin-bottom: -0.3em; */
+    /* box-shadow: 0 0 0 #000000, 0px 0px 1px #0d0d0d; */
+}
+
+
+
+
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
+
     border: 0.15em solid white;
     outline: 1px solid black;
-
     height: 0.75em;
     width: 0.75em;
-    /* border-radius: 3px; */
     background: white;
-    /* cursor: pointer; */
     margin-top: -0.3em;
     margin-bottom: -0.3em;
-    /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
     box-shadow: 0 0 0 #000000, 0px 0px 1px #0d0d0d;
-    /* Add cool effects to your sliders! */
+
 }
 
 button {
